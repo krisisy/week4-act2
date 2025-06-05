@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
-    public function posts(): BelongsToMany
+    public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Post::class, 'post_category');
+        return $this->belongsToMany(Category::class, 'post_category');
     }
 }

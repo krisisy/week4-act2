@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
-    public function categories(): BelongsToMany
+    public function posts(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'post_category');
+        return $this->belongsToMany(Post::class, 'post_category');
     }
 
     public function tags(): BelongsToMany
