@@ -21,7 +21,7 @@ class PostFactory extends Factory
         return [
             'title' => $title,
             'content' => fake()->paragraph(),
-            'slug' => Str::slug($title),
+            'slug' => String::slug($title),
             'publication_date' => $status == 'P' ? now() : null,
             'status' => $status,
             'featured_image_url' => fake()->imageUrl(640, 480, 'animals', true)
