@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comment extends Model
 {
+
+    protected $fillable = [
+        'comment_content',
+        'comment_date',
+        'reviewer_name',
+        'reviewer_email',
+        'is_hidden'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
