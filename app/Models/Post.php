@@ -30,11 +30,6 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'post_category');
     }
 
-    public function posts(): BelongsToMany
-    {
-        return $this->belongsToMany(Post::class, 'post_category');
-    }
-
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'post_tag');
