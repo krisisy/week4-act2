@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('comment_content');
+            $table->timestamp('comment_date');
             $table->string('reviewer_name')->nullable();
             $table->string('reviewer_email')->nullable();
-            $table->boolean('is_hidden')->default();
+            $table->boolean('is_hidden')->default('false');
             $table->timestamps();
         });
     }

@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('title');
-            $table->text('content');
-            $table->string('slug');
-            $table->timestamp('publication_date')->nullable();
-            $table->timestamp('last_modified_date')->nullable();
-            $table->string('status')->max(1)->comment('D - Draft, p - Published, I - Inactive');
-            $table->text('featured_image_url');
-            $table->integer('views_count')->default(0);
+            $table->id();
+            $table->string('title')->comment('Title of the post.');
+            $table->text('content')->comment('Content of the post.');
+            $table->string('slug')->comment('URL descriptor of the post.');
+            $table->dateTime('publication_date')->comment('Date of publication.')->nullable();
+            $table->dateTime('last_modified_date')->comment('Date where post was last modified.')->nullable();
+            $table->string('status')->comment('D - Draft, P - Published, I - Inactive.')->max(1);
+            $table->text('featured_image_url')->comment('URL for the featured image of the post.');
+            $table->integer('views_count')->comment('Total views of post.')->default(0);
         });
     }
 

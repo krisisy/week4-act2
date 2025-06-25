@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('media', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('file_name');
             $table->string('file_type')->max(10);
             $table->integer('file_size')->default(0);
-            $table->string('url');
-            $table->string('description')->nullable();
+            $table->text('url');
             $table->timestamp('upload_date');
+            $table->string('description')->nullable();
         });
     }
 
