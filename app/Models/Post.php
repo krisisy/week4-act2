@@ -19,7 +19,7 @@ class Post extends Model
         'content',
         'slug',
         'publication_date',
-        'last_modified_date', // Unsure
+        'last_modified_date',
         'status',
         'featured_image_url',
         'views_count'

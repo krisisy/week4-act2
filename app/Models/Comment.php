@@ -13,7 +13,6 @@ class Comment extends Model
     
     public $timestamps = false;
 
-
     protected $fillable = [
         'comment_content',
         'comment_date',
@@ -27,10 +26,10 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function comment(): BelongsTo
-    {
-        return $this->belongsTo(Comment::class, 'parent_comment_id');
-    }
+    // public function comment(): BelongsTo
+    // {
+    //     return $this->belongsTo(Comment::class, 'parent_comment_id');
+    // }
 
     public function comments(): HasMany
     {
