@@ -15,25 +15,26 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
+        Post::factory()->count(100)->create();
         // Seeding Post then attach user id on it
-        $users = User::all();
+        // $users = User::all();
 
-        if ($users->count() === 0) {
-            echo "No users found, please run UserSeeder first.\n";
-            return;
-        }
+        // if ($users->count() === 0) {
+        //     echo "No users found, please run UserSeeder first.\n";
+        //     return;
+        // }
 
-        Post::factory(10)->create([
-            'user_id' => $users->random()->id,
-        ]);
+        // Post::factory(10)->create([
+        //     'user_id' => $users->random()->id,
+        // ]);
 
-        // Attach categories of Post
-        $categories = Category::all();
-        $posts = Post::all();
+        // // Attach categories of Post
+        // $categories = Category::all();
+        // $posts = Post::all();
 
-        foreach ($posts as $post) {
-            $randomCats = $categories->random(rand(1, 3));
-            $post->categories()->attach($randomCats);
-        }
+        // foreach ($posts as $post) {
+        //     $randomCats = $categories->random(rand(1, 3));
+        //     $post->categories()->attach($randomCats);
+        // }
     }
 }

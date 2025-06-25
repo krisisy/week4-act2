@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
         return [
             'category_name' => $catName,
             'slug' => Str::slug($catName),
-            'description' => fake()->sentences(rand(1, 5))
+            'description' => fake()->words(10, true)
         ];
     }
 }
