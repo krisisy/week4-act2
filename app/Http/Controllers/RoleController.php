@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class RoleController extends Controller
 {
@@ -11,7 +12,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $role = Role::all();
+        return view('roles.index');
     }
 
     /**
@@ -19,7 +21,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
@@ -27,7 +29,14 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'role_name' => 'required|max:255',
+            'description' => 'max:255',
+        ]);
+        $role = Role::create($validateData);
+        return redirect()
+            ->route('roles.index')
+            ->wite('success', 'Role created successfully');
     }
 
     /**
@@ -35,7 +44,8 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.show', ['role' => $role]);
     }
 
     /**
@@ -43,7 +53,8 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $role = Role::find($id);
+        return view('roles.edit', ['role' => $role]);
     }
 
     /**
@@ -51,7 +62,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request);
+        $role = Role::find($id);
+            $validateData = $request->validate([
+            'role_name' => 'required|max:255',
+            'description' => 'max:255',
+        ]);
+        $role = update($validateData);
+        return redirect()
+            ->route('roles.index')
+            ->wite('success', 'Role updated successfully');
     }
 
     /**
@@ -59,6 +79,6 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::find($id);
     }
 }
